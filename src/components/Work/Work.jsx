@@ -369,6 +369,7 @@ const Work = () => {
                 allow="autoplay"
                 allowFullScreen
                 className="rounded-lg shadow-2xl"
+                loading="lazy"
               ></iframe>
               <button
                 className="absolute -top-10 right-0 bg-white/20 hover:bg-white/40 rounded-full p-1.5 transition-all"
@@ -399,3 +400,4 @@ const Work = () => {
 
 
 export default Work;
+
