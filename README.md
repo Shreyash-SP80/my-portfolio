@@ -1,27 +1,35 @@
 # 🚀 My Portfolio - Shreyash Patil
 
-Welcome to my **personal portfolio website**, built using **React** and **Vite**, styled with **Tailwind CSS**, and featuring smooth animations using **Framer Motion** and **GSAP**.  
-This portfolio showcases my projects, skills, and provides ways to connect with me.
+[![GitHub stars](https://img.shields.io/github/stars/Shreyash-SP80/my-portfolio?style=social)](https://github.com/Shreyash-SP80/my-portfolio) [![GitHub forks](https://img.shields.io/github/forks/Shreyash-SP80/my-portfolio?style=social)](https://github.com/Shreyash-SP80/my-portfolio) [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000?style=flat&logo=vercel)](https://my-portfolio.vercel.app/)
+
+Welcome to my **personal portfolio website**, built using **React** and **Vite**, styled with **Tailwind CSS**, and enhanced with smooth animations using **Framer Motion** and **GSAP**.  
+This portfolio highlights my **projects, skills, and contact methods** to connect with me.
 
 ---
 
 ## ✨ Features
 
-- ✅ Fully responsive design with **Tailwind CSS**  
-- ✅ Smooth animations with **Framer Motion** and **GSAP**  
-- ✅ Interactive scrolling effects  
-- ✅ Projects section with **images & playable videos**  
-- ✅ Social media integration: **GitHub, LinkedIn, Instagram, WhatsApp**  
-- ✅ Contact form powered by **EmailJS**  
-- ✅ Light/Dark mode toggle for modern user experience  
+- Fully responsive and modern design using **Tailwind CSS**  
+- Smooth animations with **Framer Motion** and **GSAP**  
+- Interactive scrolling and section-based animations  
+- Projects showcase with **images & playable videos**  
+- Social media links: **GitHub, LinkedIn, Instagram, WhatsApp**  
+- Contact form powered by **EmailJS** for direct messages  
+- Light/Dark mode toggle for a better UX  
+- Clean and maintainable code structure  
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Frontend | Styling | Animations | Icons | Utilities | Email Service |
-|----------|--------|------------|-------|----------|---------------|
-| React, Vite | Tailwind CSS | Framer Motion, GSAP | React Icons, Lucide React, Remixicon | React Scroll, Lenis, Dotenv | EmailJS |
+| Category | Technology |
+|----------|------------|
+| Frontend | React, Vite |
+| Styling | Tailwind CSS |
+| Animations | Framer Motion, GSAP |
+| Icons | React Icons, Lucide React, Remixicon |
+| Utilities | React Scroll, Lenis, Dotenv |
+| Email Service | EmailJS |
 
 ---
 
