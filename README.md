@@ -82,8 +82,7 @@ my-portfolio/
 ├─ public/              # Static assets (images, videos, etc.)
 ├─ src/
 │  ├─ assets/           # Images, icons, videos
-│  ├─ components/       # Reusable React components
-│  ├─ pages/            # Different pages like Home, About, Projects
+│  ├─ components/       # Reusable React components pages like Home, About, Projects
 │  ├─ App.jsx           # Main React app
 │  ├─ main.jsx          # Entry point
 ├─ .env                 # Environment variables
