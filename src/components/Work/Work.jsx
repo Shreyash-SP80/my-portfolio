@@ -33,7 +33,7 @@ const Work = () => {
       tags: ["Python", "Streamlit", "MongoDB", "Data Science"],
       image:
         "/projectimg/ResultManagement.png",
-      video: "/videos/ResultManagement1.mp4",
+      video: "https://drive.google.com/file/d/1w-ztmCKoeH00JFbglq2PsMZ9kTuR2P5S/preview",
       github: null,
       demo: null,
       gradientFrom: "from-indigo-500",
@@ -362,13 +362,14 @@ const Work = () => {
               transition={{ type: "spring", damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <video
-                ref={(el) => addVideoRef(el, playingVideo)}
+             <iframe
                 src={projects[playingVideo]?.video}
-                controls
-                autoPlay
-                className="w-full rounded-lg shadow-2xl"
-              />
+                width="100%"
+                height="480px"
+                allow="autoplay"
+                allowFullScreen
+                className="rounded-lg shadow-2xl"
+              ></iframe>
               <button
                 className="absolute -top-10 right-0 bg-white/20 hover:bg-white/40 rounded-full p-1.5 transition-all"
                 onClick={handleCloseVideo}
@@ -395,5 +396,6 @@ const Work = () => {
     </section>
   );
 };
+
 
 export default Work;
