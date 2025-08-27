@@ -1,0 +1,945 @@
+
+
+
+Normal Loading page =>
+// import { useRef, useEffect } from 'react';
+// import gsap from 'gsap';
+// import { FourSquare } from 'react-loading-indicators';
+
+// function Loading() {
+//   const containerRef = useRef(null);
+//   const contentRef = useRef(null);
+
+//   useEffect(() => {
+//     const tl = gsap.timeline();
+    
+//     // Initial state
+//     gsap.set(containerRef.current, { opacity: 0 });
+//     gsap.set(contentRef.current.children, { opacity: 0, y: 20 });
+
+//     // Animation sequence
+//     tl.to(containerRef.current, {
+//       opacity: 1,
+//       duration: 0.5
+//     })
+//     .to(contentRef.current.children, {
+//       opacity: 1,
+//       y: 0,
+//       stagger: 0.15,
+//       duration: 0.8,
+//       ease: "power2.out"
+//     });
+
+//     return () => tl.kill();
+//   }, []);
+
+//   return (
+//     <div
+//       ref={containerRef}
+//       className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900"
+//     >
+//       <div ref={contentRef} className="text-center">
+//         {/* Logo */}
+//         <div className="mb-8 mx-auto rounded-full border-2 border-indigo-500 p-1.5 w-20 h-20">
+//           <img
+//             src="/logo/Mylogo.jpg"
+//             alt="Logo"
+//             className="w-full h-full rounded-full object-cover"
+//           />
+//         </div>
+
+//         {/* Title */}
+//         {/* <h1 className="mb-8 text-3xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+//           Shreyash's Portfolio
+//         </h1> */}
+//         <h1 className="md:mb-8 sm:mb-3 text-2xl font-bold text-purple-400">
+//           Shreyash's Portfolio
+//         </h1>
+
+//         {/* FourSquare Loader */}
+//         {/* <div className="scale-150"> Makes the loader larger */}
+//         <div className="scale-100 sm:scale-125 md:scale-150">
+//           <FourSquare 
+//             color={["#32cd32", "#327fcd", "#cd32cd", "#cd8032"]}
+//             size="large"
+//             text="Loading..."
+//             textColor="#e2e8f0"
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Loading;
+
+
+
+
+
+
+
+Navbar => 
+// import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import gsap from 'gsap';
+// import useTheme from '../../context/Theme';
+// // import ThemeToggleButton from '../ui/ThemeToggleButton';
+
+// function Navbar() {
+//   const { themeMode, lightTheme, darkTheme } = useTheme();
+//   const [activeLink, setActiveLink] = useState('home');
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+//   const navRef = useRef(null);
+//   const logoRef = useRef(null);
+//   const linksRef = useRef([]);
+//   const rightIconsRef = useRef(null);
+
+//   linksRef.current = [];
+
+//   // GSAP animation before paint
+//   useLayoutEffect(() => {
+//     if (!navRef.current) return;
+
+//     const ctx = gsap.context(() => {
+//       const links = linksRef.current.filter(Boolean);
+
+//       // Set initial hidden state before first paint
+//       gsap.set(navRef.current, { autoAlpha: 0, y: -16 });
+//       gsap.set(logoRef.current, { autoAlpha: 0, y: -12, scale: 0.95 });
+//       gsap.set(links, { autoAlpha: 0, y: -6 });
+//       gsap.set(rightIconsRef.current, { autoAlpha: 0, x: 12 });
+
+//       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+//       tl.to(navRef.current, { autoAlpha: 1, y: 0, duration: 0.9 }, 'start')
+//         .to(logoRef.current, { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 }, 'start+=0.15')
+//         .to(links, { autoAlpha: 1, y: 0, stagger: 0.07, duration: 0.5 }, 'start+=0.25')
+//         .to(rightIconsRef.current, { autoAlpha: 1, x: 0, duration: 0.5 }, 'start+=0.35')
+//         .to(
+//           '.active-link-indicator',
+//           { y: -3, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' },
+//           'start+=0.7'
+//         );
+//     }, navRef);
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   // Scroll effect
+//   // useEffect(() => {
+//   //   const handleScroll = () => setIsScrolled(window.scrollY > 10);
+//   //   window.addEventListener('scroll', handleScroll);
+//   //   return () => window.removeEventListener('scroll', handleScroll);
+//   // }, []);
+
+//   useEffect(() => {
+//       const handleScroll = () => {
+//         const scrollPos = window.scrollY;
+//         navLinks.forEach(link => {
+//           const section = document.getElementById(link.id);
+//           if (section) {
+//             const offsetTop = section.offsetTop - 80; // adjust for navbar height
+//             const offsetBottom = offsetTop + section.offsetHeight;
+//             if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+//               setActiveLink(link.id);
+//             }
+//           }
+//         });
+//       };
+//     window.addEventListener("scroll", handleScroll);
+//     handleScroll();
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   // Theme toggle
+//   const toggleTheme = () => {
+//     if (themeMode === 'light') darkTheme();
+//     else lightTheme();
+//   };
+
+//   const navLinks = [
+//     { id: 'home', label: 'Home' },
+//     { id: 'about', label: 'About' },
+//     { id: 'work', label: 'Work' },
+//     { id: 'contact', label: 'Contact' },
+//   ];
+
+//   return (
+//     <>
+//       {/* Fixed Navbar Container */}
+//       <div className="fixed inset-x-0 top-0 z-50 h-5 md:h-21 font-mono pointer-events-none">
+//         <header
+//           ref={navRef}
+//           className={`pointer-events-auto w-full max-w-7xl mx-auto rounded-full transition-all duration-300 mt-4
+//             ${themeMode === 'light'
+//               ? 'bg-white/80 backdrop-blur-lg shadow-[0_8px_30px_rgba(16,24,40,0.25)]'
+//               : 'bg-gray-900/80 backdrop-blur-lg shadow-[0_8px_30px_rgba(0,0,0,0.5)]'}
+//             ${isScrolled ? 'py-2 px-6' : 'py-3 px-8'}`}
+//         >
+//           <div className="flex justify-between items-center h-full px-4">
+//             {/* Logo */}
+//             <motion.div
+//               ref={logoRef}
+//               whileHover={{ scale: 1.1 }}
+//               whileTap={{ scale: 0.95 }}
+//               className="flex items-center gap-3"
+//             >
+//               <div className="overflow-hidden rounded-full border-2 border-indigo-500 p-1">
+//                 <motion.img
+//                   src="/Mylogo.jpg"
+//                   alt="Logo"
+//                   className="h-10 w-10 rounded-full object-cover"
+//                   whileHover={{ rotate: 15 }}
+//                   transition={{ type: 'spring', stiffness: 300 }}
+//                 />
+//               </div>
+//             </motion.div>
+
+//             {/* Desktop Navigation */}
+//             <nav className="hidden md:flex items-center gap-1">
+//               {navLinks.map((link, idx) => (
+//                 <motion.a
+//                   key={link.id}
+//                   ref={(el) => (linksRef.current[idx] = el)}
+//                   href={`#${link.id}`}
+//                   className={`relative px-4 py-2 rounded-full text-lg font-medium transition-all
+//                     ${themeMode === 'light' ? 'text-gray-700 hover:text-indigo-600' : 'text-gray-300 hover:text-indigo-400'}
+//                     ${activeLink === link.id ? (themeMode === 'light' ? 'text-indigo-600' : 'text-indigo-400') : ''}`}
+//                   onClick={() => setActiveLink(link.id)}
+//                   whileHover={{ y: -2 }}
+//                   whileTap={{ scale: 0.95 }}
+//                 >
+//                   {link.label}
+//                   {activeLink === link.id && (
+//                     <motion.span
+//                       layoutId="activeLink"
+//                       className="active-link-indicator absolute left-1/2 bottom-1 -translate-x-1/2 w-6 h-1 bg-indigo-500 rounded-full"
+//                       transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+//                     />
+//                   )}
+//                 </motion.a>
+//               ))}
+//             </nav>
+
+//             {/* Right Side Icons */}
+//             <div ref={rightIconsRef} className="flex items-center gap-4">
+//               {/* Theme Toggle */}
+//               <motion.button
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className={`p-2 rounded-full transition-all
+//                   ${themeMode === 'light' ? 'bg-white/90 hover:bg-gray-100 text-indigo-600 shadow-sm' : 'bg-gray-800/90 hover:bg-gray-700 text-yellow-300 shadow-md'}`}
+//                 onClick={toggleTheme}
+//                 title="Toggle Theme"
+//               >
+//                 {themeMode === 'light' ? (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+//                   </svg>
+//                 ) : (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                     <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+//                   </svg>
+//                 )}
+//               </motion.button>
+             
+//               {/* With this: */}
+//                 {/* <ThemeToggleButton 
+//                   variant="circle-blur" 
+//                   start="top-right" 
+//                   className="z-10"
+//                 /> */}
+
+//               {/* GitHub Link */}
+//               <motion.a
+//                 href="https://github.com/Shreyash-SP80"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 whileHover={{ scale: 1.05, y: -2 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className={`p-2 rounded-full transition-all
+//                   ${themeMode === 'light' ? 'bg-white/90 hover:bg-gray-100 text-gray-700 shadow-sm' : 'bg-gray-800/90 hover:bg-gray-700 text-white shadow-md'}`}
+//                 title="GitHub"
+//               >
+//                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+//                   <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+//                 </svg>
+//               </motion.a>
+
+//               {/* Mobile Menu Button */}
+//               <motion.button
+//                 className="md:hidden p-2 rounded-full"
+//                 onClick={() => setMobileMenuOpen((s) => !s)}
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 aria-label="Toggle menu"
+//               >
+//                 {mobileMenuOpen ? (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//                   </svg>
+//                 ) : (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+//                   </svg>
+//                 )}
+//               </motion.button>
+//             </div>
+//           </div>
+//         </header>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       <AnimatePresence>
+//         {mobileMenuOpen && (
+//           <div className="fixed inset-x-0 top-24 z-[60] flex justify-center pointer-events-none">
+//             <motion.div
+//               initial={{ opacity: 0, y: -14 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               exit={{ opacity: 0, y: -14 }}
+//               transition={{ duration: 0.28 }}
+//               className={`pointer-events-auto w-[90%] max-w-md rounded-2xl py-4 px-6
+//                 ${themeMode === 'light' ? 'bg-white/95 backdrop-blur-lg shadow-xl' : 'bg-gray-900/95 backdrop-blur-lg shadow-xl shadow-indigo-900/30'}`}
+//             >
+//               <nav className="flex flex-col gap-2">
+//                 {navLinks.map((link) => (
+//                   <motion.a
+//                     key={link.id}
+//                     href={`#${link.id}`}
+//                     className={`relative px-4 py-3 rounded-lg text-base font-medium transition-all
+//                       ${themeMode === 'light' ? 'text-gray-700 hover:bg-gray-100' : 'text-gray-300 hover:bg-gray-800'}
+//                       ${activeLink === link.id ? (themeMode === 'light' ? 'bg-gray-100 text-indigo-600' : 'bg-gray-800 text-indigo-400') : ''}`}
+//                     onClick={() => {
+//                       setActiveLink(link.id);
+//                       setMobileMenuOpen(false);
+//                     }}
+//                     whileHover={{ x: 5 }}
+//                     whileTap={{ scale: 0.98 }}
+//                   >
+//                     {link.label}
+//                     {activeLink === link.id && (
+//                       <motion.span
+//                         layoutId="mobileActiveLink"
+//                         className="absolute left-0 top-0 h-full w-1 bg-indigo-500 rounded-r-full"
+//                         transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+//                       />
+//                     )}
+//                   </motion.a>
+//                 ))}
+//               </nav>
+//             </motion.div>
+//           </div>
+//         )}
+//       </AnimatePresence>
+
+//       {/* Spacer to prevent content from being hidden behind navbar */}
+//       <div className="h-24"></div>
+//     </>
+//   );
+// }
+
+// export default Navbar;
+
+
+// import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import gsap from 'gsap';
+// import useTheme from '../../context/Theme';
+
+// function Navbar() {
+//   const { themeMode, lightTheme, darkTheme } = useTheme();
+//   const [activeLink, setActiveLink] = useState('home');
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+//   const navRef = useRef(null);
+//   const logoRef = useRef(null);
+//   const linksRef = useRef([]);
+//   const rightIconsRef = useRef(null);
+
+//   linksRef.current = [];
+
+//   // GSAP loading animation
+//   useLayoutEffect(() => {
+//     if (!navRef.current) return;
+
+//     const ctx = gsap.context(() => {
+//       const links = linksRef.current.filter(Boolean);
+
+//       // Set initial state for animation
+//       gsap.set(navRef.current, { y: -100, opacity: 0 });
+//       gsap.set(logoRef.current, { opacity: 0, scale: 0.8 });
+//       gsap.set(links, { opacity: 0, y: 10 });
+//       gsap.set(rightIconsRef.current, { opacity: 0, x: 20 });
+
+//       // Create timeline for sequential animation
+//       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+//       // Animate navbar sliding down
+//       tl.to(navRef.current, { y: 0, opacity: 1, duration: 0.8 })
+//         // Animate logo fading in
+//         .to(logoRef.current, { opacity: 1, scale: 1, duration: 0.5 }, '-=0.4')
+//         // Animate links with stagger
+//         .to(links, { opacity: 1, y: 0, stagger: 0.1, duration: 0.4 }, '-=0.3')
+//         // Animate right icons
+//         .to(rightIconsRef.current, { opacity: 1, x: 0, duration: 0.5 }, '-=0.2');
+//     }, navRef);
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   // Scroll effect
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const scrollPos = window.scrollY;
+//       navLinks.forEach(link => {
+//         const section = document.getElementById(link.id);
+//         if (section) {
+//           const offsetTop = section.offsetTop - 80;
+//           const offsetBottom = offsetTop + section.offsetHeight;
+//           if (scrollPos >= offsetTop && scrollPos < offsetBottom) {
+//             setActiveLink(link.id);
+//           }
+//         }
+//       });
+//     };
+//     window.addEventListener("scroll", handleScroll);
+//     handleScroll();
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   // Theme toggle
+//   const toggleTheme = () => {
+//     if (themeMode === 'light') darkTheme();
+//     else lightTheme();
+//   };
+
+//   const navLinks = [
+//     { id: 'home', label: 'Home' },
+//     { id: 'about', label: 'About' },
+//     { id: 'work', label: 'Work' },
+//     { id: 'contact', label: 'Contact' },
+//   ];
+
+//   return (
+//     <>
+//       {/* Fixed Navbar Container */}
+//       <div className="fixed inset-x-0 top-0 z-50 h-5 md:h-21 font-mono pointer-events-none">
+//         <header
+//           ref={navRef}
+//           className={`pointer-events-auto w-full max-w-7xl mx-auto rounded-full transition-all duration-300 mt-4
+//             ${themeMode === 'light'
+//               ? 'bg-white/80 backdrop-blur-lg shadow-[0_8px_30px_rgba(16,24,40,0.25)]'
+//               : 'bg-gray-900/80 backdrop-blur-lg shadow-[0_8px_30px_rgba(0,0,0,0.5)]'}
+//             ${isScrolled ? 'py-2 px-6' : 'py-3 px-8'}`}
+//         >
+//           <div className="flex justify-between items-center h-full px-4">
+//             {/* Logo */}
+//             <motion.div
+//               ref={logoRef}
+//               whileHover={{ scale: 1.1 }}
+//               whileTap={{ scale: 0.95 }}
+//               className="flex items-center gap-3"
+//             >
+//               <div className="overflow-hidden rounded-full border-2 border-indigo-500 p-1">
+//                 <motion.img
+//                   src="/Mylogo.jpg"
+//                   alt="Logo"
+//                   className="h-10 w-10 rounded-full object-cover"
+//                   whileHover={{ rotate: 15 }}
+//                   transition={{ type: 'spring', stiffness: 300 }}
+//                 />
+//               </div>
+//             </motion.div>
+
+//             {/* Desktop Navigation */}
+//             <nav className="hidden md:flex items-center gap-1">
+//               {navLinks.map((link, idx) => (
+//                 <motion.a
+//                   key={link.id}
+//                   ref={(el) => (linksRef.current[idx] = el)}
+//                   href={`#${link.id}`}
+//                   className={`relative px-4 py-2 rounded-full text-lg font-medium transition-all
+//                     ${themeMode === 'light' ? 'text-gray-700 hover:text-indigo-600' : 'text-gray-300 hover:text-indigo-400'}
+//                     ${activeLink === link.id ? (themeMode === 'light' ? 'text-indigo-600' : 'text-indigo-400') : ''}`}
+//                   onClick={() => setActiveLink(link.id)}
+//                   whileHover={{ y: -2 }}
+//                   whileTap={{ scale: 0.95 }}
+//                 >
+//                   {link.label}
+//                   {activeLink === link.id && (
+//                     <motion.span
+//                       layoutId="activeLink"
+//                       className="active-link-indicator absolute left-1/2 bottom-1 -translate-x-1/2 w-6 h-1 bg-indigo-500 rounded-full"
+//                       transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+//                     />
+//                   )}
+//                 </motion.a>
+//               ))}
+//             </nav>
+
+//             {/* Right Side Icons */}
+//             <div ref={rightIconsRef} className="flex items-center gap-4">
+//               {/* Theme Toggle */}
+//               <motion.button
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className={`p-2 rounded-full transition-all
+//                   ${themeMode === 'light' ? 'bg-white/90 hover:bg-gray-100 text-indigo-600 shadow-sm' : 'bg-gray-800/90 hover:bg-gray-700 text-yellow-300 shadow-md'}`}
+//                 onClick={toggleTheme}
+//                 title="Toggle Theme"
+//               >
+//                 {themeMode === 'light' ? (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+//                   </svg>
+//                 ) : (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+//                     <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+//                   </svg>
+//                 )}
+//               </motion.button>
+             
+//               {/* GitHub Link */}
+//               <motion.a
+//                 href="https://github.com/Shreyash-SP80"
+//                 target="_blank"
+//                 rel="noopener noreferrer"
+//                 whileHover={{ scale: 1.05, y: -2 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 className={`p-2 rounded-full transition-all
+//                   ${themeMode === 'light' ? 'bg-white/90 hover:bg-gray-100 text-gray-700 shadow-sm' : 'bg-gray-800/90 hover:bg-gray-700 text-white shadow-md'}`}
+//                 title="GitHub"
+//               >
+//                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+//                   <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+//                 </svg>
+//               </motion.a>
+
+//               {/* Mobile Menu Button */}
+//               <motion.button
+//                 className="md:hidden p-2 rounded-full"
+//                 onClick={() => setMobileMenuOpen((s) => !s)}
+//                 whileHover={{ scale: 1.05 }}
+//                 whileTap={{ scale: 0.95 }}
+//                 aria-label="Toggle menu"
+//               >
+//                 {mobileMenuOpen ? (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//                   </svg>
+//                 ) : (
+//                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+//                   </svg>
+//                 )}
+//               </motion.button>
+//             </div>
+//           </div>
+//         </header>
+//       </div>
+
+//       {/* Mobile Menu */}
+//       <AnimatePresence>
+//         {mobileMenuOpen && (
+//           <div className="fixed inset-x-0 top-24 z-[60] flex justify-center pointer-events-none">
+//             <motion.div
+//               initial={{ opacity: 0, y: -14 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               exit={{ opacity: 0, y: -14 }}
+//               transition={{ duration: 0.28 }}
+//               className={`pointer-events-auto w-[90%] max-w-md rounded-2xl py-4 px-6
+//                 ${themeMode === 'light' ? 'bg-white/95 backdrop-blur-lg shadow-xl' : 'bg-gray-900/95 backdrop-blur-lg shadow-xl shadow-indigo-900/30'}`}
+//             >
+//               <nav className="flex flex-col gap-2">
+//                 {navLinks.map((link) => (
+//                   <motion.a
+//                     key={link.id}
+//                     href={`#${link.id}`}
+//                     className={`relative px-4 py-3 rounded-lg text-base font-medium transition-all
+//                       ${themeMode === 'light' ? 'text-gray-700 hover:bg-gray-100' : 'text-gray-300 hover:bg-gray-800'}
+//                       ${activeLink === link.id ? (themeMode === 'light' ? 'bg-gray-100 text-indigo-600' : 'bg-gray-800 text-indigo-400') : ''}`}
+//                     onClick={() => {
+//                       setActiveLink(link.id);
+//                       setMobileMenuOpen(false);
+//                     }}
+//                     whileHover={{ x: 5 }}
+//                     whileTap={{ scale: 0.98 }}
+//                   >
+//                     {link.label}
+//                     {activeLink === link.id && (
+//                       <motion.span
+//                         layoutId="mobileActiveLink"
+//                         className="absolute left-0 top-0 h-full w-1 bg-indigo-500 rounded-r-full"
+//                         transition={{ type: 'spring', bounce: 0.3, duration: 0.6 }}
+//                       />
+//                     )}
+//                   </motion.a>
+//                 ))}
+//               </nav>
+//             </motion.div>
+//           </div>
+//         )}
+//       </AnimatePresence>
+
+//       {/* Spacer to prevent content from being hidden behind navbar */}
+//       <div className="h-24"></div>
+//     </>
+//   );
+// }
+
+// export default Navbar;
+
+
+
+
+
+Work section =>
+
+// import React, { useRef, useEffect, useState } from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { motion, AnimatePresence } from "framer-motion";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// const Work = () => {
+//   const containerRef = useRef(null);
+//   const dividerRef = useRef(null);
+//   const subtitleRef = useRef(null);
+//   const projectRefs = useRef([]);
+//   const titleRef = useRef(null);
+//   const [playingVideo, setPlayingVideo] = useState(null);
+//   const videoRefs = useRef([]);
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   useEffect(() => {
+//     // Check if mobile on mount and resize
+//     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+//     checkMobile();
+//     window.addEventListener("resize", checkMobile);
+//     return () => window.removeEventListener("resize", checkMobile);
+//   }, []);
+
+//   const projects = [
+//     {
+//       id: 1,
+//       title: "Collage Result Management System",
+//       description:
+//         "Developed a College Result Management System using Python, Streamlit, and MongoDB to manage student records, calculate results, and display insights through a simple user-friendly interface.",
+//       tags: ["Python", "Streamlit", "MongoDB", "Data Science"],
+//       image:
+//         "/projectimg/ResultManagement.png",
+//       video: "/videos/ResultManagement1.mp4", // Replace with your video URL
+//       gradientFrom: "from-indigo-500",
+//       gradientTo: "to-purple-600",
+//     },
+//     {
+//       id: 2,
+//       title: "Interactive Portfolio",
+//       description:
+//         "Developed a modern portfolio using React, featuring smooth animations and transitions with GSAP and Framer Motion, styled with Tailwind CSS for a responsive and elegant design.",
+//       tags: ["React", "GSAP", "Framer Motion", "Tailwind CSS"],
+//       image:
+//         "/projectimg/Protfolio.png",
+//       video: "https://example.com/video2.mp4", // Replace with your video URL
+//       gradientFrom: "from-amber-500",
+//       gradientTo: "to-pink-500",
+//     },
+//     {
+//       id: 3,
+//       title: "AI-Powered Skill-to-Career Roadmap Generator",
+//       description:
+//         "Built a MERN-based Skill-to-Career Roadmap Generator with AI/ML-powered personalized paths and a gamified journey featuring badges, levels, and step-by-step guidance.",
+//       tags: ["React", "Expres.js", "Node.js", "Mongodb", "AI ML API's"],
+//       image:
+//         "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?auto=format&fit=crop&w=1600&q=80",
+//       video: "https://example.com/video3.mp4", // Replace with your video URL
+//       gradientFrom: "from-emerald-500",
+//       gradientTo: "to-teal-600",
+//     },
+//   ];
+
+//   const addToRefs = (el) => {
+//     if (el && !projectRefs.current.includes(el)) {
+//       projectRefs.current.push(el);
+//     }
+//   };
+
+//   const addVideoRef = (el, index) => {
+//     if (el && !videoRefs.current[index]) {
+//       videoRefs.current[index] = el;
+//     }
+//   };
+
+//   useEffect(() => {
+//     const ctx = gsap.context(() => {
+//       gsap.from(titleRef.current, {
+//         scrollTrigger: {
+//           trigger: titleRef.current,
+//           start: "top 80%",
+//           end: "bottom 20%",
+//           toggleActions: "play reset play reset"
+//         },
+//         y: 30,
+//         opacity: 0,
+//         duration: 0.8,
+//         delay: 0.2,
+//         ease: "back.out(1.7)"
+//       });
+
+//       gsap.from(dividerRef.current, {
+//         scrollTrigger: {
+//           trigger: dividerRef.current,
+//           start: "top 80%",
+//           end: "bottom 20%",
+//           toggleActions: "play reset play reset"
+//         },
+//         scaleX: 0,
+//         opacity: 0,
+//         duration: 1,
+//         delay: 0.4,
+//         ease: "power3.out"
+//       });
+
+//       gsap.from(subtitleRef.current, {
+//         scrollTrigger: {
+//           trigger: subtitleRef.current,
+//           start: "top 80%",
+//           end: "bottom 20%",
+//           toggleActions: "play reset play reset"
+//         },
+//         y: 20,
+//         opacity: 0,
+//         duration: 0.8,
+//         delay: 0.6,
+//         ease: "power3.out"
+//       });
+
+//       projectRefs.current.forEach((project) => {
+//         gsap.from(project, {
+//           opacity: 0,
+//           scale: 0.95,
+//           y: 80,
+//           duration: 1,
+//           ease: "power3.out",
+//           scrollTrigger: {
+//             trigger: project,
+//             start: "top 85%",
+//             end: "+=300",
+//             toggleActions: "play none none reverse",
+//           },
+//         });
+//       });
+//     }, containerRef);
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   const handlePlayVideo = (index) => {
+//     setPlayingVideo(index);
+//     setTimeout(() => {
+//       if (videoRefs.current[index]) {
+//         videoRefs.current[index].play();
+//       }
+//     }, 300);
+//   };
+
+//   const handleCloseVideo = () => {
+//     videoRefs.current.forEach((video) => {
+//       if (video) video.pause();
+//     });
+//     setPlayingVideo(null);
+//   };
+
+//   // Calculate sticky positioning
+//   const getStickyPosition = (index) => {
+//     if (isMobile) {
+//       return `${90 + index * 45}px`;
+//     }
+//     return `${120 + index * 50}px`;
+//   };
+
+//   return (
+//     <section
+//       ref={containerRef}
+//       className="relative py-10 md:py-20 bg-gradient-to-br from-gray-100 to-gray-100 dark:from-gray-900 dark:to-gray-900"
+//       id="work"
+//     >
+//       <div className="container mx-auto px-4 md:px-6">
+//         <div className="text-center mb-8 md:mb-20">
+//           <h2 ref={titleRef} className="text-3xl md:text-6xl font-bold mb-4 text-gray-800 dark:text-white">
+//             Featured <span className="text-indigo-500 dark:text-indigo-400">Work</span>
+//           </h2>
+//           <div ref={dividerRef} className="w-24 md:w-32 h-1 md:h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-4 md:mb-6 rounded-full" />
+//           <p ref={subtitleRef} className="text-base md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+//             Selected projects that showcase my skills and approach
+//           </p>
+//         </div>
+
+//         <div
+//           className="relative"
+//           style={{ height: isMobile ? `${projects.length * 70}vh` : `${projects.length * 60}vh` }}
+//         >
+//           {projects.map((project, index) => (
+//             <div
+//               key={project.id}
+//               ref={addToRefs}
+//               className="project-card group rounded-xl md:rounded-2xl overflow-hidden shadow-lg will-change-transform bg-white dark:bg-gray-800 flex flex-col md:flex-row"
+//               style={{
+//                 position: "sticky",
+//                 top: getStickyPosition(index),
+//                 zIndex: projects.length + index,
+//                 maxWidth: "880px",
+//                 margin: "0 auto",
+//                 minHeight: isMobile ? "280px" : "320px",
+//                 border: "1px solid rgba(255,255,255,0.1)",
+//                 marginBottom: "10px",
+//                 boxShadow: "0 8px 16px rgba(0, 0, 0, 0.25)",
+//                 borderRadius: "12px",
+//               }}
+//             >
+//               <div className={`flex-1 p-4 md:p-6 flex flex-col justify-center ${isMobile ? 'order-2' : ''}`}>
+//                 <span className="inline-block text-xl md:text-2xl font-bold mb-1 text-gray-900 dark:text-white">
+//                   0{index + 1}
+//                 </span>
+//                 <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900 dark:text-white">
+//                   {project.title}
+//                 </h3>
+//                 <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-3 md:mb-4 max-w-xl">
+//                   {project.description}
+//                 </p>
+//                 <div className="flex flex-wrap gap-1 md:gap-2">
+//                   {project.tags.map((tag, i) => (
+//                     <span
+//                       key={i}
+//                       className="px-2 py-1 md:px-3 md:py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-gray-800 dark:text-white font-medium text-xs"
+//                     >
+//                       {tag}
+//                     </span>
+//                   ))}
+//                 </div>
+//               </div>
+
+//               {/* Image/Video Section */}
+//               <div className={`w-full ${isMobile ? 'h-45' : 'md:w-[40%]'} flex flex-col items-center justify-start p-2 md:p-4 relative ${isMobile ? 'order-1' : ''}`}>
+//                 <div className="w-full h-5 md:h-6 bg-gray-200 dark:bg-gray-700 flex items-center px-2 rounded-t-lg md:rounded-t-xl border border-b-0 border-gray-300 dark:border-gray-600">
+//                   <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full mr-1 md:mr-1.5"></span>
+//                   <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-yellow-500 rounded-full mr-1 md:mr-1.5"></span>
+//                   <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full"></span>
+//                 </div>
+
+//                 <motion.div
+//                   className="relative rounded-b-lg md:rounded-b-xl overflow-hidden border border-gray-300 dark:border-gray-800 w-full cursor-pointer group"
+//                   style={{
+//                     backgroundImage: `url(${project.image})`,
+//                     backgroundSize: "cover",
+//                     backgroundPosition: "center",
+//                     height: isMobile ? "calc(100% - 20px)" : "180px",
+//                   }}
+//                   whileHover={{
+//                     scale: 1.02,
+//                     transition: { duration: 0.3 },
+//                   }}
+//                   onClick={() => handlePlayVideo(index)}
+//                 >
+//                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 bg-black/50">
+//                     <div className={`${isMobile ? 'w-12 h-12' : 'w-14 h-14'} bg-white/30 rounded-full flex items-center justify-center border-2 border-white backdrop-blur-sm`}>
+//                       <svg
+//                         xmlns="http://www.w3.org/2000/svg"
+//                         className={`${isMobile ? 'h-5 w-5' : 'h-6 w-6'} ml-0.5 text-white`}
+//                         fill="currentColor"
+//                         viewBox="0 0 20 20"
+//                       >
+//                         <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
+//                       </svg>
+//                     </div>
+//                   </div>
+//                 </motion.div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Get In Touch Section */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           transition={{ delay: 0.5 }}
+//           className="text-center mt-10 md:mt-20 px-4"
+//         >
+//           <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-4 md:mb-6">
+//             Want to turn ideas into reality? Let’s talk about it!
+//           </p>
+//           <motion.button
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//             onClick={() => {
+//               document.getElementById("contact")?.scrollIntoView({
+//                 behavior: "smooth",
+//               });
+//             }}
+//             className="px-6 py-2.5 md:px-5 md:py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full font-semibold text-sm md:text-base shadow-md hover:shadow-lg transition-all duration-300 w-full max-w-xs mx-auto"
+//           >
+//             Let’s Connect
+//           </motion.button>
+//         </motion.div>
+//       </div>
+
+//       {/* Video Modal */}
+//       <AnimatePresence>
+//         {playingVideo !== null && (
+//           <motion.div
+//             className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//             onClick={handleCloseVideo}
+//           >
+//             <motion.div
+//               className="relative max-w-4xl w-full mx-4"
+//               initial={{ scale: 0.9, opacity: 0 }}
+//               animate={{ scale: 1, opacity: 1 }}
+//               exit={{ scale: 0.9, opacity: 0 }}
+//               transition={{ type: "spring", damping: 25 }}
+//               onClick={(e) => e.stopPropagation()}
+//             >
+//               <video
+//                 ref={(el) => addVideoRef(el, playingVideo)}
+//                 src={projects[playingVideo]?.video}
+//                 controls
+//                 autoPlay
+//                 className="w-full rounded-lg shadow-2xl"
+//               />
+//               <button
+//                 className="absolute -top-10 right-0 bg-white/20 hover:bg-white/40 rounded-full p-1.5 transition-all"
+//                 onClick={handleCloseVideo}
+//               >
+//                 <svg
+//                   xmlns="http://www.w3.org/2000/svg"
+//                   className="h-5 w-5 md:h-6 md:w-6 text-white"
+//                   fill="none"
+//                   viewBox="0 0 24 24"
+//                   stroke="currentColor"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth={2}
+//                     d="M6 18L18 6M6 6l12 12"
+//                   />
+//                 </svg>
+//               </button>
+//             </motion.div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </section>
+//   );
+// };
+
+// export default Work;
