@@ -153,63 +153,6 @@ const ContactMe = () => {
     return () => ctx.revert();
   }, []);
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   setIsSubmitting(true);
-  //   setSubmitStatus(null);
-
-  //   // const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  //   // const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  //   // const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-  //   // Try both Vite and CRA environment variable patterns
-  //   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || process.env.REACT_APP_EMAILJS_SERVICE_ID;
-  //   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-  //   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
-  //   // Debug: Check if environment variables are loaded
-  //   console.log("EmailJS Config:", {
-  //     hasServiceId: !!serviceId,
-  //     hasTemplateId: !!templateId,
-  //     hasPublicKey: !!publicKey
-  //   });
-
-  //   emailjs.sendForm(
-  //     // process.env.REACT_APP_EMAILJS_SERVICE_ID,
-  //     // process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-  //     serviceId,
-  //     templateId,
-  //     form.current,
-  //     // process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-  //     publicKey
-  //   )
-  //   .then((result) => {
-  //     console.log(result.text);
-  //     setSubmitStatus('success');
-  //     // Success animation
-  //     gsap.from(".success-message", {
-  //       y: 20,
-  //       opacity: 0,
-  //       duration: 0.5,
-  //       ease: "back.out(1.7)"
-  //     });
-  //     form.current.reset();
-  //   }, (error) => {
-  //     console.log(error.text);
-  //     setSubmitStatus('error');
-  //     // Error animation
-  //     gsap.from(".error-message", {
-  //       y: 20,
-  //       opacity: 0,
-  //       duration: 0.5,
-  //       ease: "back.out(1.7)"
-  //     });
-  //   })
-  //   .finally(() => {
-  //     setIsSubmitting(false);
-  //     setTimeout(() => setSubmitStatus(null), 5000);
-  //   });
-  // };
 
 
   const sendEmail = (e) => {
@@ -545,4 +488,5 @@ const ContactMe = () => {
 
 
 export default ContactMe;
+
 
