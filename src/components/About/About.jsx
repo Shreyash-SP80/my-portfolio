@@ -351,7 +351,7 @@ function About() {
               </h3>
               <div className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 dark:text-gray-300">
                 <p>
-                  My coding journey began in 2018 with C, sparking a passion for <span className="text-indigo-500 dark:text-indigo-400 font-medium">problem-solving</span> and logical thinking. This curiosity led me to modern technologies and <span className="text-indigo-500 dark:text-indigo-400 font-medium">web development</span>, where I enjoy creating meaningful digital experiences. With continuous learning and practice, I’ve built the ability to turn ideas into <span className="text-indigo-500 dark:text-indigo-400 font-medium">user-friendly projects</span>.
+                  My coding journey began in 2023 with C, sparking a passion for <span className="text-indigo-500 dark:text-indigo-400 font-medium">problem-solving</span> and logical thinking. This curiosity led me to modern technologies and <span className="text-indigo-500 dark:text-indigo-400 font-medium">web development</span>, where I enjoy creating meaningful digital experiences. With continuous learning and practice, I’ve built the ability to turn ideas into <span className="text-indigo-500 dark:text-indigo-400 font-medium">user-friendly projects</span>.
                 </p>
                 <p>
                   Along with my technical journey, my academics have shaped my growth. Scoring <span className="text-indigo-500 dark:text-indigo-400 font-medium">80% in 10th</span> and 59.20% in 12th taught me persistence and the importance of continuous improvement. These lessons, combined with my passion for coding, keep me motivated to build a strong <span className="text-indigo-500 dark:text-indigo-400 font-medium">career in technology</span>.
@@ -553,4 +553,5 @@ const DraggableHobby = ({ hobby, index, constraintsRef }) => {
 };
 
 export default About;
+
 
