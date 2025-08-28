@@ -158,9 +158,21 @@ const ContactMe = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    // const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    // const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    // const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Try both Vite and CRA environment variable patterns
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    // Debug: Check if environment variables are loaded
+    console.log("EmailJS Config:", {
+      hasServiceId: !!serviceId,
+      hasTemplateId: !!templateId,
+      hasPublicKey: !!publicKey
+    });
 
     emailjs.sendForm(
       // process.env.REACT_APP_EMAILJS_SERVICE_ID,
@@ -482,5 +494,6 @@ const ContactMe = () => {
     </section>
   );
 };
+
 
 export default ContactMe;
