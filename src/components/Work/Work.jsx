@@ -48,7 +48,7 @@ const Work = () => {
       image:
         "/projectimg/Protfolio.png",
       video: "https://example.com/video2.mp4",
-      github: "https://github.com/Shreyash-SP80/my-protfolio",
+      github: null,
       demo: "https://my-portfolio-9vub.vercel.app/", 
       gradientFrom: "from-amber-500",
       gradientTo: "to-pink-500",
@@ -400,5 +400,6 @@ const Work = () => {
 
 
 export default Work;
+
 
 
