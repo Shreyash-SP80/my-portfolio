@@ -19,13 +19,11 @@ function Navbar() {
 
   linksRef.current = [];
 
-  // Simplified loading animation
+      // loading animation
     useLayoutEffect(() => {
-      // Set a timeout to simulate waiting for the loading screen to complete
       const timer = setTimeout(() => {
         setIsLoaded(true);
         
-        // Apply simple fade-in animation to all navbar elements
         const navElements = document.querySelectorAll('.nav-item');
         navElements.forEach((el, index) => {
           setTimeout(() => {
@@ -35,7 +33,7 @@ function Navbar() {
             }
           }, 100 * index);
         });
-      }, 1100); // Slightly longer than your loading animation
+      }, 1100); 
   
       return () => clearTimeout(timer);
     }, []);
@@ -242,3 +240,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
