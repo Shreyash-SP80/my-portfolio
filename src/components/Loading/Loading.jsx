@@ -1,5 +1,3 @@
-
-// With type writer
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { FourSquare } from 'react-loading-indicators';
@@ -12,18 +10,18 @@ function Loading({ onLoadingComplete }) {
 
   useEffect(() => {
     const tl = gsap.timeline();
-    
-    // Initial state
-    gsap.set(containerRef.current, { opacity: 0 });
-    gsap.set(contentRef.current.children, { opacity: 0, y: 20 });
+  
+    gsap.set(containerRef.current, { autoAlpha: 0 });
+    gsap.set(contentRef.current.children, { autoAlpha: 0, y: 20 });
 
-    // Animation sequence
+    // Animation sequence 
     tl.to(containerRef.current, {
-      opacity: 1,
-      duration: 0.5
+      autoAlpha: 1,
+      duration: 0.6,
+      ease: "power2.out"
     })
     .to(contentRef.current.children, {
-      opacity: 1,
+      autoAlpha: 1,
       y: 0,
       stagger: 0.15,
       duration: 0.8,
@@ -36,7 +34,6 @@ function Loading({ onLoadingComplete }) {
     let timeoutId = null;
     
     const typeWriter = () => {
-      // Type loader text
       if (loaderIndex < loaderText.length && loaderTextRef.current) {
         loaderTextRef.current.textContent = loaderText.substring(0, loaderIndex + 1);
         loaderIndex++;
@@ -52,11 +49,19 @@ function Loading({ onLoadingComplete }) {
             }
           });
           
-          exitTl.to(containerRef.current, {
-            opacity: 0,
+          // Smooth exit animation
+          exitTl.to(contentRef.current.children, {
+            y: -20,
+            autoAlpha: 0,
+            stagger: 0.1,
+            duration: 0.6,
+            ease: "power2.in"
+          })
+          .to(containerRef.current, {
+            autoAlpha: 0,
             duration: 0.8,
             ease: "power2.inOut"
-          });
+          }, "-=0.4");
         }, 1000);
       }
     };
@@ -94,7 +99,7 @@ function Loading({ onLoadingComplete }) {
           Shreyash's Portfolio
         </h1>
 
-        {/* FourSquare (https://react-loading-indicators.netlify.app/) Loader with custom text  */}
+        {/* Loader */}
         <div className="scale-100 sm:scale-125 md:scale-150">
           <FourSquare 
             color={["#32cd32", "#327fcd", "#cd32cd", "#cd8032"]}
@@ -102,12 +107,11 @@ function Loading({ onLoadingComplete }) {
             text=""
             textColor="#e2e8f0"
           />
-          {/* Custom text element for the loader with static color */}
           <div 
             ref={loaderTextRef}
             className="mt-1 text-lg font-medium font-mono text-indigo-300"
           >
-            {/* Text will be filled by typewriter effect */}
+            {/* Typewriter fills text here */}
           </div>
         </div>
       </div>
