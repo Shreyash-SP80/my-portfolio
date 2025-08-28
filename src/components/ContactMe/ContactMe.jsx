@@ -444,7 +444,7 @@ const ContactMe = () => {
                     name: "WhatsApp", 
                     icon: "whatsapp", 
                     color: "green", 
-                    url: "https://wa.me/8956501934" 
+                    url: "https://wa.me/+918956501934" 
                   },
                   { 
                     name: "Instagram", 
@@ -488,5 +488,6 @@ const ContactMe = () => {
 
 
 export default ContactMe;
+
 
 
