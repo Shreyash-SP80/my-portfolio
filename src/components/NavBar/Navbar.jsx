@@ -1,4 +1,5 @@
 
+
 import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
@@ -9,6 +10,7 @@ function Navbar() {
   const [activeLink, setActiveLink] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const navRef = useRef(null);
   const logoRef = useRef(null);
@@ -17,55 +19,26 @@ function Navbar() {
 
   linksRef.current = [];
 
-  // GSAP loading animation
-  useLayoutEffect(() => {
-    if (!navRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const links = linksRef.current.filter(Boolean);
-      
-      // Check if mobile device
-      const isMobile = window.innerWidth < 768;
-      
-      // Set initial state for animation - simplified for mobile
-      if (isMobile) {
-        gsap.set(navRef.current, { y: -20, opacity: 0 });
-        gsap.set(logoRef.current, { opacity: 0 });
-        gsap.set(rightIconsRef.current, { opacity: 0 });
+  // Simplified loading animation
+    useLayoutEffect(() => {
+      // Set a timeout to simulate waiting for the loading screen to complete
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
         
-        // Create timeline for mobile animation
-        const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
-        
-        // Animate navbar sliding down
-        tl.to(navRef.current, { y: 0, opacity: 1, duration: 0.6 })
-          // Animate logo and icon 
-          .to([logoRef.current, rightIconsRef.current], { 
-            opacity: 1, 
-            duration: 0.5 
-          }, '-=0.3');
-      } else {
-        // For desktop: use the original animation
-        gsap.set(navRef.current, { y: -100, opacity: 0 });
-        gsap.set(logoRef.current, { opacity: 0, scale: 0.8 });
-        gsap.set(links, { opacity: 0, y: 10 });
-        gsap.set(rightIconsRef.current, { opacity: 0, x: 20 });
-
-        // Create timeline for sequential animation
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-        // Animate navbar sliding down
-        tl.to(navRef.current, { y: 0, opacity: 1, duration: 0.8 })
-          // Animate logo fading in
-          .to(logoRef.current, { opacity: 1, scale: 1, duration: 0.5 }, '-=0.4')
-          // Animate links with stagger
-          .to(links, { opacity: 1, y: 0, stagger: 0.1, duration: 0.4 }, '-=0.3')
-          // Animate right icons
-          .to(rightIconsRef.current, { opacity: 1, x: 0, duration: 0.5 }, '-=0.2');
-      }
-    }, navRef);
-
-    return () => ctx.revert();
-  }, []);
+        // Apply simple fade-in animation to all navbar elements
+        const navElements = document.querySelectorAll('.nav-item');
+        navElements.forEach((el, index) => {
+          setTimeout(() => {
+            if (el) {
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            }
+          }, 100 * index);
+        });
+      }, 1100); // Slightly longer than your loading animation
+  
+      return () => clearTimeout(timer);
+    }, []);
 
   // Scroll effect
   useEffect(() => {
@@ -81,6 +54,7 @@ function Navbar() {
           }
         }
       });
+      setIsScrolled(scrollPos > 50);
     };
     window.addEventListener("scroll", handleScroll);
     handleScroll();
@@ -112,13 +86,13 @@ function Navbar() {
               : 'bg-gray-900/80 backdrop-blur-lg shadow-[0_8px_30px_rgba(0,0,0,0.5)]'}
             ${isScrolled ? 'py-2 px-6' : 'py-3 px-8'}`}
         >
-          <div className="flex justify-between items-center h-full px-4">
+          <div className="flex justify-between items-center h-full px-4 py-1.5 md:py-1">
             {/* Logo */}
             <motion.div
               ref={logoRef}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-3"
+              className="nav-item flex items-center gap-3 opacity-0 transform -translate-y-0 transition-all duration-500"
             >
               <div className="overflow-hidden rounded-full border-2 border-indigo-500 p-1">
                 <motion.img
@@ -138,7 +112,7 @@ function Navbar() {
                   key={link.id}
                   ref={(el) => (linksRef.current[idx] = el)}
                   href={`#${link.id}`}
-                  className={`relative px-4 py-2 rounded-full text-lg font-medium transition-all
+                  className={`nav-item relative px-4 py-2 rounded-full text-lg font-medium transition-all opacity-0 transform -translate-y-0
                     ${themeMode === 'light' ? 'text-gray-700 hover:text-indigo-600' : 'text-gray-300 hover:text-indigo-400'}
                     ${activeLink === link.id ? (themeMode === 'light' ? 'text-indigo-600' : 'text-indigo-400') : ''}`}
                   onClick={() => setActiveLink(link.id)}
@@ -158,7 +132,7 @@ function Navbar() {
             </nav>
 
             {/* Right Side Icons */}
-            <div ref={rightIconsRef} className="flex items-center gap-4">
+            <div ref={rightIconsRef} className="nav-item flex items-center gap-4 opacity-0 transform -translate-y-0 transition-all duration-500">
               {/* Theme Toggle */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
