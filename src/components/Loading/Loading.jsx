@@ -1,3 +1,4 @@
+
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { FourSquare } from 'react-loading-indicators';
@@ -7,21 +8,22 @@ function Loading({ onLoadingComplete }) {
   const contentRef = useRef(null);
   const titleRef = useRef(null);
   const loaderTextRef = useRef(null);
+  const loaderRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
-  
-    gsap.set(containerRef.current, { autoAlpha: 0 });
-    gsap.set(contentRef.current.children, { autoAlpha: 0, y: 20 });
+    
+    // Initial state
+    gsap.set(containerRef.current, { opacity: 0 });
+    gsap.set(contentRef.current.children, { opacity: 0, y: 20 });
 
-    // Animation sequence 
+    // Animation sequence
     tl.to(containerRef.current, {
-      autoAlpha: 1,
-      duration: 0.6,
-      ease: "power2.out"
+      opacity: 1,
+      duration: 0.5
     })
     .to(contentRef.current.children, {
-      autoAlpha: 1,
+      opacity: 1,
       y: 0,
       stagger: 0.15,
       duration: 0.8,
@@ -31,15 +33,15 @@ function Loading({ onLoadingComplete }) {
     // Typewriter effect for loader text
     const loaderText = "🛠️ Explore My Work...🛠️";
     let loaderIndex = 0;
-    let timeoutId = null;
     
     const typeWriter = () => {
+      // Type loader text
       if (loaderIndex < loaderText.length && loaderTextRef.current) {
         loaderTextRef.current.textContent = loaderText.substring(0, loaderIndex + 1);
         loaderIndex++;
-        timeoutId = setTimeout(typeWriter, 100);
+        setTimeout(typeWriter, 100);
       } else {
-        // After typewriter completes, animate the exit
+        // After typewriter completes, wait a moment then animate the exit
         setTimeout(() => {
           const exitTl = gsap.timeline({
             onComplete: () => {
@@ -49,31 +51,32 @@ function Loading({ onLoadingComplete }) {
             }
           });
           
-          // Smooth exit animation
-          exitTl.to(contentRef.current.children, {
+          // Animate loader and text out first
+          exitTl.to([loaderRef.current, loaderTextRef.current], {
+            opacity: 0,
             y: -20,
-            autoAlpha: 0,
-            stagger: 0.1,
             duration: 0.6,
             ease: "power2.in"
           })
+          // Then animate the rest of the content
+          .to([titleRef.current, contentRef.current.children[0]], {
+            opacity: 0,
+            y: -20,
+            duration: 0.6,
+            ease: "power2.in"
+          }, "-=0.3")
+          // Finally fade out the entire container
           .to(containerRef.current, {
-            autoAlpha: 0,
+            opacity: 0,
             duration: 0.8,
             ease: "power2.inOut"
-          }, "-=0.4");
-        }, 1000);
+          });
+        }, 1500); // Increased wait time to allow loader to be visible longer
       }
     };
     
     // Start typewriter after initial animations
-    timeoutId = setTimeout(typeWriter, 1000);
-    
-    // Cleanup function
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-      tl.kill();
-    };
+    setTimeout(typeWriter, 1000);
   }, [onLoadingComplete]);
 
   return (
@@ -99,19 +102,20 @@ function Loading({ onLoadingComplete }) {
           Shreyash's Portfolio
         </h1>
 
-        {/* Loader */}
-        <div className="scale-100 sm:scale-125 md:scale-150">
+        {/* FourSquare Loader with custom text */}
+        <div ref={loaderRef} className="scale-100 sm:scale-125 md:scale-150">
           <FourSquare 
             color={["#32cd32", "#327fcd", "#cd32cd", "#cd8032"]}
             size="large"
             text=""
             textColor="#e2e8f0"
           />
+          {/* Custom text element for the loader with static color */}
           <div 
             ref={loaderTextRef}
             className="mt-1 text-lg font-medium font-mono text-indigo-300"
           >
-            {/* Typewriter fills text here */}
+            {/* Text will be filled by typewriter effect */}
           </div>
         </div>
       </div>
@@ -120,3 +124,4 @@ function Loading({ onLoadingComplete }) {
 }
 
 export default Loading;
+
