@@ -41,7 +41,6 @@ function Loading({ onLoadingComplete }) {
         loaderIndex++;
         setTimeout(typeWriter, 100);
       } else {
-        // After typewriter completes, wait a moment then animate the exit
         setTimeout(() => {
           const exitTl = gsap.timeline({
             onComplete: () => {
@@ -51,31 +50,29 @@ function Loading({ onLoadingComplete }) {
             }
           });
           
-          // Animate loader and text out first
           exitTl.to([loaderRef.current, loaderTextRef.current], {
             opacity: 0,
             y: -20,
             duration: 0.6,
             ease: "power2.in"
           })
-          // Then animate the rest of the content
+            
           .to([titleRef.current, contentRef.current.children[0]], {
             opacity: 0,
             y: -20,
             duration: 0.6,
             ease: "power2.in"
           }, "-=0.3")
-          // Finally fade out the entire container
+        
           .to(containerRef.current, {
             opacity: 0,
             duration: 0.8,
             ease: "power2.inOut"
           });
-        }, 1500); // Increased wait time to allow loader to be visible longer
+        }, 1500); 
       }
     };
     
-    // Start typewriter after initial animations
     setTimeout(typeWriter, 1000);
   }, [onLoadingComplete]);
 
@@ -124,4 +121,5 @@ function Loading({ onLoadingComplete }) {
 }
 
 export default Loading;
+
 
