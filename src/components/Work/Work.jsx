@@ -33,9 +33,9 @@ const Work = () => {
       tags: ["Python", "Streamlit", "MongoDB", "Data Science"],
       image:
         "/projectimg/ResultManagement.png",
-      video: "https://collage-resultmanagement-system.streamlit.app/",
+      video: "https://drive.google.com/file/d/1w-ztmCKoeH00JFbglq2PsMZ9kTuR2P5S/preview",
       github: null,
-      demo: null,
+      demo: "https://collage-resultmanagement-system.streamlit.app/",
       gradientFrom: "from-indigo-500",
       gradientTo: "to-purple-600",
     },
