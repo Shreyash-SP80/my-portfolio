@@ -47,7 +47,7 @@ const Work = () => {
       tags: ["React", "GSAP", "Framer Motion", "Tailwind CSS"],
       image:
         "/projectimg/Protfolio.png",
-      video: "https://example.com/video2.mp4",
+      video: "https://drive.google.com/file/d/1v5eFbMKbzivOtqEnCqO6ci4vtrNmScG9/preview",
       github: null,
       demo: "https://my-portfolio-9vub.vercel.app/", 
       gradientFrom: "from-amber-500",
@@ -400,6 +400,7 @@ const Work = () => {
 
 
 export default Work;
+
 
 
 
