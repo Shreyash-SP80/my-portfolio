@@ -33,7 +33,7 @@ const Work = () => {
       tags: ["Python", "Streamlit", "MongoDB", "Data Science"],
       image:
         "/projectimg/ResultManagement.png",
-      video: "https://drive.google.com/file/d/1w-ztmCKoeH00JFbglq2PsMZ9kTuR2P5S/preview",
+      video: "https://collage-resultmanagement-system.streamlit.app/",
       github: null,
       demo: null,
       gradientFrom: "from-indigo-500",
@@ -400,6 +400,7 @@ const Work = () => {
 
 
 export default Work;
+
 
 
 
