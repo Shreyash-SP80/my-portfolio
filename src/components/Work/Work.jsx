@@ -34,8 +34,8 @@ const Work = () => {
       image:
         "/projectimg/ResultManagement.png",
       video: "https://drive.google.com/file/d/1w-ztmCKoeH00JFbglq2PsMZ9kTuR2P5S/preview",
-      github: null,
-      demo: "https://collage-resultmanagement-system.streamlit.app/",
+      github: "https://github.com/Shreyash-SP80/Collage-ResultManagement-System",
+      demo: null,
       gradientFrom: "from-indigo-500",
       gradientTo: "to-purple-600",
     },
@@ -400,6 +400,7 @@ const Work = () => {
 
 
 export default Work;
+
 
 
 
