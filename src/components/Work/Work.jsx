@@ -72,7 +72,7 @@ const Work = () => {
       title: "CodeScanAi – AI-Powered Code Review Assistant",
       description:
         "Built a web app with React, Node.js, Express.js, and Google Gemini AI for automated code reviews, real-time editing, syntax highlighting, and responsive design.",
-      tags: ["React", "Expres.js", "Node.js", "Genini API"],
+      tags: ["React", "Expres.js", "Node.js", "Gemini API"],
       image:
         "/projectimg/codeReviw.png",
       video: "https://drive.google.com/file/d/1Csd0sP5Yu3FgqPfZDCgnytYgArTv1Dy_/preview",
@@ -414,6 +414,7 @@ const Work = () => {
 
 
 export default Work;
+
 
 
 
