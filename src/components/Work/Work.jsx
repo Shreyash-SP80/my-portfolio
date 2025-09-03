@@ -67,6 +67,20 @@ const Work = () => {
       gradientFrom: "from-emerald-500",
       gradientTo: "to-teal-600",
     },
+    {
+      id: 4,
+      title: "CodeScanAi – AI-Powered Code Review Assistant",
+      description:
+        "Built a web app with React, Node.js, Express.js, and Google Gemini AI for automated code reviews, real-time editing, syntax highlighting, and responsive design.",
+      tags: ["React", "Expres.js", "Node.js", "Genini API"],
+      image:
+        "/projectimg/CareerCraft.png",
+      video: "https://example.com/video3.mp4",
+      github: "https://github.com/Shreyash-SP80/CodeScanAI", 
+      demo: null, 
+      gradientFrom: "from-emerald-500",
+      gradientTo: "to-teal-600",
+    },
   ];
 
   const addToRefs = (el) => {
@@ -400,6 +414,7 @@ const Work = () => {
 
 
 export default Work;
+
 
 
 
