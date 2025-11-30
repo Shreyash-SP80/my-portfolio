@@ -5,14 +5,25 @@ html {
   scroll-behavior: smooth;
 }
 
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+.scrollbar-hide::-webkit-scrollbar {
+   display: none;
+}
   
-  .scrollbar-hide {
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
-  }
+.scrollbar-hide {
+   -ms-overflow-style: none;  
+   scrollbar-width: none;  
+}
 
 
-  
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
