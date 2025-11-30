@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
-
+/* @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *)); */
+/* 
 html {
   scroll-behavior: smooth;
 }
@@ -12,9 +12,19 @@ html {
 .scrollbar-hide {
    -ms-overflow-style: none;  
    scrollbar-width: none;  
+} */
+
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ❌ REMOVE THIS (important)
+html {
+  scroll-behavior: smooth;
 }
+*/
 
-
+/* ✅ Add Lenis CSS */
 html.lenis {
   height: auto;
 }
@@ -27,3 +37,13 @@ html.lenis {
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+
+/* Your existing code is fine */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
