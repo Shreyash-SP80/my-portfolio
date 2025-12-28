@@ -482,7 +482,7 @@ function Home() {
                   className="
                     w-full h-full
                     object-cover
-                    object-top
+                    object-[center_12%]
                     scale-110
                   "
                 />
@@ -526,6 +526,7 @@ function Home() {
 }
 
 export default Home;
+
 
 
 
