@@ -463,20 +463,28 @@ function Home() {
                 }}
               /> */}
 
+            {/* Profile Image */}
               <div
                 ref={imageRef}
-                className="relative flex justify-center items-center
-                           w-[13rem] h-[13rem]
-                           md:w-[20rem] md:h-[20rem]
-                           rounded-full border-4
-                           border-indigo-500/20 dark:border-indigo-400/20
-                           shadow-xl
-                           translate-x-12 rotate-6"
+                className="
+                  relative
+                  w-[14rem] h-[14rem]
+                  md:w-[22rem] md:h-[22rem]
+                  rounded-full
+                  border-4 border-indigo-500/20 dark:border-indigo-400/20
+                  shadow-xl
+                  overflow-hidden
+                "
               >
                 <img
                   src="/MyImage/My.png"
                   alt="Shreyash Patil"
-                  className="w-full h-full object-cover rounded-full"
+                  className="
+                    w-full h-full
+                    object-cover
+                    object-top
+                    scale-110
+                  "
                 />
               </div>
             </div>
@@ -518,6 +526,7 @@ function Home() {
 }
 
 export default Home;
+
 
 
 
