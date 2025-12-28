@@ -453,7 +453,7 @@ function Home() {
               </svg>
 
               {/* Profile image */}
-              {/* <div
+              <div
                 ref={imageRef}
                 className="w-[11rem] h-[11rem] md:w-[18rem] md:h-[18rem] rounded-full overflow-hidden border-4 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl transform translate-x-20 rotate-12"
                 style={{
@@ -461,32 +461,8 @@ function Home() {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
-              /> */}
+              /> 
 
-            {/* Profile Image */}
-              <div
-                ref={imageRef}
-                className="
-                  relative
-                  w-[14rem] h-[14rem]
-                  md:w-[22rem] md:h-[22rem]
-                  rounded-full
-                  border-4 border-indigo-500/20 dark:border-indigo-400/20
-                  shadow-xl
-                  overflow-hidden
-                "
-              >
-                <img
-                  src="/MyImage/My.png"
-                  alt="Shreyash Patil"
-                  className="
-                    w-full h-full
-                    object-cover
-                    object-[center_12%]
-                    scale-110
-                  "
-                />
-              </div>
             </div>
 
             {/* Typewriter text */}
@@ -526,6 +502,7 @@ function Home() {
 }
 
 export default Home;
+
 
 
 
