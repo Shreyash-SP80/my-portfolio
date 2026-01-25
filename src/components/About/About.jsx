@@ -5,19 +5,23 @@ import { motion } from 'framer-motion';
 import {
   SiCplusplus,
   SiReact,
-  SiPhp,
   SiMysql,
   SiPython,
   SiTailwindcss,
-  SiGreensock,
-  SiGithub
+  SiGithub,
+  SiAppwrite,
+  SiFirebase,
+  SiDocker,
+  SiPostman,
+  SiLinux
 } from "react-icons/si";
 
 import {
   FaJava,
   FaDatabase,
   FaCode,
-  FaChartBar
+  FaChartBar,
+  FaCloud 
 } from "react-icons/fa";
 
 
@@ -81,25 +85,29 @@ function About() {
 
   const ICON_SIZE = 21;
   const skills = [
-  { name: "DSA In C++", icon: <SiCplusplus size={ICON_SIZE} color="#00599C" /> },
-  { name: "C++", icon: <SiCplusplus size={ICON_SIZE} color="#00599C" /> },
-  { name: "Java", icon: <FaJava size={ICON_SIZE} color="#F89820" /> },
+    { name: "DSA In C++", icon: <SiCplusplus size={ICON_SIZE} color="#00599C" /> },
+    { name: "C++", icon: <SiCplusplus size={ICON_SIZE} color="#00599C" /> },
+    { name: "Java", icon: <FaJava size={ICON_SIZE} color="#F89820" /> },
 
-  { name: "MERN Stack", icon: <SiReact size={ICON_SIZE} color="#61DAFB" /> },
-  { name: "PHP", icon: <SiPhp size={ICON_SIZE} color="#777BB4" /> },
-  { name: "MySQL", icon: <SiMysql size={ICON_SIZE} color="#4479A1" /> },
+    { name: "MERN Stack", icon: <SiReact size={ICON_SIZE} color="#61DAFB" /> },
+    { name: "MySQL", icon: <SiMysql size={ICON_SIZE} color="#4479A1" /> },
 
-  { name: "SQL", icon: <FaDatabase size={ICON_SIZE} color="#4B5563" /> },
-  { name: "Python", icon: <SiPython size={ICON_SIZE} color="#3776AB" /> },
-  { name: "Data Science", icon: <FaCode size={ICON_SIZE} color="#10B981" /> },
+    { name: "SQL", icon: <FaDatabase size={ICON_SIZE} color="#4B5563" /> },
+    { name: "Python", icon: <SiPython size={ICON_SIZE} color="#3776AB" /> },
+    { name: "Data Science", icon: <FaCode size={ICON_SIZE} color="#10B981" /> },
 
-  { name: "PowerBI", icon: <FaChartBar size={ICON_SIZE} color="#F2C811" /> },
-  { name: "Tailwind", icon: <SiTailwindcss size={ICON_SIZE} color="#06B6D4" /> },
+    { name: "PowerBI", icon: <FaChartBar size={ICON_SIZE} color="#F2C811" /> },
+    { name: "Tailwind", icon: <SiTailwindcss size={ICON_SIZE} color="#06B6D4" /> },
 
-  { name: "GSAP", icon: <SiGreensock size={ICON_SIZE} color="#88CE02" /> },
-  { name: "Framer Motion", icon: <FaCode size={ICON_SIZE} color="#E535AB" /> },
-  { name: "Git and GitHub", icon: <SiGithub size={ICON_SIZE} color="#181717" /> }
-];
+    { name: "Docker", icon: <SiDocker size={ICON_SIZE} color="#2496ED" /> },
+    { name: "Postman", icon: <SiPostman size={ICON_SIZE} color="#FF6C37" /> },
+    { name: "Linux", icon: <SiLinux size={ICON_SIZE} color="#FCC624" /> },
+    { name: "Git and GitHub", icon: <SiGithub size={ICON_SIZE} color="#181717" /> },
+
+    { name: "Azure (Cloud)", icon: <FaCloud size={ICON_SIZE} color="#0078D4" /> },
+    { name: "Appwrite", icon: <SiAppwrite size={ICON_SIZE} color="#F02E65" /> },
+    { name: "Firebase", icon: <SiFirebase size={ICON_SIZE} color="#FFCA28" /> }
+  ];
 
   // Programming background code lines
   const codeLines = [
@@ -410,14 +418,54 @@ function About() {
               <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-xl md:text-3xl font-semibold mb-3 md:mb-4 text-gray-800 dark:text-white">
                 My Journey
               </h3>
-              <div style={{ fontFamily: "'Open Sans', sans-serif" }} className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 dark:text-gray-300">
+              {/* <div style={{ fontFamily: "'Open Sans', sans-serif" }} className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 dark:text-gray-300">
                 <p>
                   My coding journey began in 2023  with C, sparking a passion for <span className="text-indigo-500 dark:text-indigo-400 font-medium">problem-solving</span> and logical thinking. This curiosity led me to modern technologies and <span className="text-indigo-500 dark:text-indigo-400 font-medium">web development</span>, where I enjoy creating meaningful digital experiences. With continuous learning and practice, I’ve built the ability to turn ideas into <span className="text-indigo-500 dark:text-indigo-400 font-medium">user-friendly projects</span>.
                 </p>
                 <p>
                   Along with my technical journey, my academics have shaped my growth. Scoring <span className="text-indigo-500 dark:text-indigo-400 font-medium">80% in 10th</span> and 59.20% in 12th taught me persistence and the importance of continuous improvement. These lessons, combined with my passion for coding, keep me motivated to build a strong <span className="text-indigo-500 dark:text-indigo-400 font-medium">career in technology</span>.
                 </p>
-              </div>
+              </div> */}
+              <div
+                style={{ fontFamily: "'Open Sans', sans-serif" }}
+                className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 dark:text-gray-300"
+              >
+                <p>
+                  My coding journey began in 2023 with C, sparking a passion for{" "}
+                  <span className="text-indigo-500 dark:text-indigo-400 font-medium">
+                    problem-solving
+                  </span>{" "}
+                  and logical thinking. This curiosity led me to{" "}
+                  <span className="text-indigo-500 dark:text-indigo-400 font-medium">
+                    web development
+                  </span>
+                  , where I enjoy creating meaningful digital experiences. I’ve also started
+                  exploring{" "}
+                  <span className="text-indigo-500 dark:text-indigo-400 font-medium">
+                    cloud concepts
+                  </span>{" "}
+                  to understand how applications work in real-world environments.
+                </p>
+
+                <p>
+                  Along with my technical journey, my academics have shaped my growth. Scoring{" "}
+                  <span className="text-indigo-500 dark:text-indigo-400 font-medium">
+                    80% in 10th
+                  </span>{" "}
+                  and 59.20% in 12th taught me persistence and the importance of continuous
+                  improvement. These lessons, combined with my interest in modern technologies
+                  including{" "}
+                  <span className="text-indigo-500 dark:text-indigo-400 font-medium">
+                    cloud-based solutions
+                  </span>
+                  , keep me motivated to build a strong{" "}
+                  <span className="text-indigo-500 dark:text-indigo-400 font-medium">
+                    career in technology
+                  </span>
+                  .
+                </p>
+            </div>
+
             </div>
 
 
@@ -568,12 +616,12 @@ function About() {
             {
               icon: "💼",
               title: "Experience",
-              description: "Worked on multiple academic and personal projects, gaining hands-on experience in C++, web development, and problem-solving."
+              description: "Worked on multiple academic and personal projects, gaining hands-on experience in C++, web development, cloud hosting, and problem-solving."
             },
             {
               icon: "🌟",
               title: "Skills",
-              description: "Strong foundation in programming, web technologies, and database management with a passion for continuous learning."
+              description: "Strong foundation in programming, web technologies, cloud concepts, and database management with a passion for continuous learning."
             }
           ].map((principle, i) => (
             <div
@@ -629,6 +677,8 @@ const DraggableHobby = ({ hobby, index, constraintsRef }) => {
 };
 
 export default About;
+
+
 
 
 
@@ -1187,6 +1237,7 @@ export default About;
 // };
 
 // export default About;
+
 
 
 
