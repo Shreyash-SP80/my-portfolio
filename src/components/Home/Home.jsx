@@ -72,10 +72,11 @@ function Home() {
 
   // Type writer
   const typewriterTexts = [
-    "Fullstack Developer 💻",
-    "Creative Problem Solver 🧠",
-    "Tech Explorer 🌐",
-    "Solving Realworld Problems 🚀",
+    "Full Stack Developer",
+    "Tech Explorer",
+    "Problems Solving",
+    "Exploring Cloud Technologies",
+    "Effective Communicator"
   ];
 
   // Animations to elements
@@ -258,6 +259,7 @@ function Home() {
         >
           <h1
             ref={nameRef}
+            style={{ fontFamily: "'Exo', cursive" }}
             className="text-2xl pl-3 md:text-6xl font-bold mb-2 md:mb-4 text-gray-800 dark:text-white"
           >
             Hello, It's{" "}
@@ -277,6 +279,7 @@ function Home() {
           {/* Color full */}
            <p
             ref={subtitleRef}
+            style={{ fontFamily: "'Open Sans', sans-serif" }}
             className="text-[1rem] pl-3 md:text-xl text-gray-600 dark:text-gray-300 md:mb-13 mb-3 max-w-xl leading-relaxed"
           >
               I'm a final-year{" "}
@@ -502,6 +505,7 @@ function Home() {
 }
 
 export default Home;
+
 
 
 
