@@ -352,7 +352,8 @@ function About() {
     <section 
       ref={containerRef}
       id="about"
-      className="relative py-25 md:py-24 overflow-hidden min-h-screen flex items-center"
+      {/* className="relative py-25 md:py-24 overflow-hidden min-h-screen flex items-center" */}
+      className="relative py-20 md:py-24 overflow-hidden min-h-screen md:flex md:items-center"
     >
       {/* background */}
        <div className="absolute inset-0 overflow-hidden opacity-100 dark:opacity-100 pointer-events-none">
@@ -1239,6 +1240,7 @@ export default About;
 // };
 
 // export default About;
+
 
 
 
