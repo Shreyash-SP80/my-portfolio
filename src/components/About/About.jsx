@@ -352,7 +352,7 @@ function About() {
     <section 
       ref={containerRef}
       id="about"
-      className="relative py-16 md:py-24 overflow-hidden min-h-screen flex items-center"
+      className="relative py-25 md:py-24 overflow-hidden min-h-screen flex items-center"
     >
       {/* background */}
        <div className="absolute inset-0 overflow-hidden opacity-100 dark:opacity-100 pointer-events-none">
@@ -402,7 +402,7 @@ function About() {
         className="relative z-10 container mx-auto px-4 md:px-6 max-w-6xl"
       >
         <div className="text-center mb-12 md:mb-20">
-          <h2 ref={titleRef} style={{ fontFamily: "'Exo', cursive" }} className="text-3xl md:text-6xl font-bold mb-4 text-gray-800 dark:text-white">
+          <h2 ref={titleRef} style={{ fontFamily: "'Exo', cursive" }} className="text-3xl md:text-6xl font-bold mb-2 text-gray-800 dark:text-white">
             About <span className="text-indigo-500 dark:text-indigo-400">Me</span>
           </h2>
           <div ref={dividerRef} className="w-25 md:w-40 h-1 md:h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mb-4 md:mb-6 rounded-full" />
@@ -415,7 +415,7 @@ function About() {
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20">
           <div className="space-y-8 md:space-y-12">
             <div ref={journeyRef} className="p-6 md:p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
-              <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-xl md:text-3xl font-semibold mb-3 md:mb-4 text-gray-800 dark:text-white">
+              <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-gray-800 dark:text-white">
                 My Journey
               </h3>
               {/* <div style={{ fontFamily: "'Open Sans', sans-serif" }} className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 dark:text-gray-300">
@@ -470,7 +470,7 @@ function About() {
 
 
             <div ref={philosophyRef} className="p-6 md:p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
-              <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-xl md:text-3xl font-semibold mb-3 md:mb-4 text-gray-800 dark:text-white">
+              <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-2xl md:text-3xl font-semibold mb-3 md:mb-4 text-gray-800 dark:text-white">
                 My Philosophy
               </h3>
               <p style={{ fontFamily: "'Open Sans', sans-serif" }} className="text-sm md:text-base text-gray-600 dark:text-gray-300">
@@ -483,12 +483,12 @@ function About() {
           {/* Skill section  */}
           <div style={{ fontFamily: "'Open Sans', sans-serif" }} className="space-y-8 md:space-y-12">
             <div className="p-6 md:p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-xl overflow-hidden">
-              <h3 ref={skillsTitleRef} style={{ fontFamily: "'Dancing Script', cursive"}} className="text-xl md:text-3xl font-semibold mb-4 md:mb-6 text-gray-800 dark:text-white">
+              <h3 ref={skillsTitleRef} style={{ fontFamily: "'Dancing Script', cursive"}} className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-gray-800 dark:text-white">
                 My <span className="text-indigo-500 dark:text-indigo-400">Skills</span>
               </h3>
               
               {isMobile ? (
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 gap-3">
                   {skills.map((skill, index) => (
                     <motion.div 
                       key={`mobile-skill-${index}`}
@@ -565,7 +565,7 @@ function About() {
               style={{ fontFamily: "'Open Sans', sans-serif" }}
               className="p-6 md:p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl border overflow-hidden border-gray-200/50 dark:border-gray-700/50 shadow-xl min-h-[200px] md:min-h-[300px] relative"
             >
-              <h3 ref={hobbiesTitleRef} style={{ fontFamily: "'Dancing Script', cursive"}} className="text-xl md:text-3xl font-semibold mb-4 md:mb-6 text-gray-800 dark:text-white">
+              <h3 ref={hobbiesTitleRef} style={{ fontFamily: "'Dancing Script', cursive"}} className="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-gray-800 dark:text-white">
                 Behind the <span className="text-indigo-500 dark:text-indigo-400">Code</span>
               </h3>
               
@@ -630,7 +630,7 @@ function About() {
               className="p-6 md:p-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg rounded-2xl border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="text-3xl md:text-4xl mb-3 md:mb-4">{principle.icon}</div>
-              <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-xl md:text-2xl font-semibold mb-2 md:mb-3 text-gray-800 dark:text-white">{principle.title}</h3>
+              <h3 style={{ fontFamily: "'Dancing Script', cursive"}} className="text-2xl md:text-2xl font-semibold mb-2 md:mb-3 text-gray-800 dark:text-white">{principle.title}</h3>
               <p style={{ fontFamily: "'Open Sans', sans-serif" }} className="text-sm md:text-base text-gray-600 dark:text-gray-300">{principle.description}</p>
             </div>
           ))}
@@ -677,6 +677,8 @@ const DraggableHobby = ({ hobby, index, constraintsRef }) => {
 };
 
 export default About;
+
+
 
 
 
@@ -1237,6 +1239,7 @@ export default About;
 // };
 
 // export default About;
+
 
 
 
