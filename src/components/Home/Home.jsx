@@ -313,41 +313,7 @@ function Home() {
               .
           </p> */}
 
-        {/* <p
-          ref={subtitleRef}
-          style={{ fontFamily: "'Open Sans', sans-serif" }}
-          className="text-[1rem] pl-3 md:text-xl text-gray-600 dark:text-gray-300 mb-5 max-w-xl leading-relaxed"
-        >
-          I build{" "}
-          <span className="text-indigo-600 dark:text-indigo-400 font-semibold">
-            full-stack applications
-          </span>{" "}
-          that focus on{" "}
-          <span className="text-purple-600 dark:text-purple-400 font-medium">
-            clean design
-          </span>
-          ,{" "}
-          <span className="text-pink-600 dark:text-pink-400 font-medium">
-            performance
-          </span>
-          , and{" "}
-          <span className="text-emerald-600 dark:text-emerald-400 font-medium">
-            real-world usability
-          </span>
-          . With hands-on experience in{" "}
-          <span className="text-blue-600 dark:text-blue-400 font-semibold">
-            cloud-based development
-          </span>
-          , I enjoy turning{" "}
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">
-            ideas
-          </span>{" "}
-          into{" "}
-          <span className="text-pink-600 dark:text-pink-400 font-medium">
-            scalable, reliable solutions
-          </span>{" "}
-          that create meaningful impact.
-        </p> */}
+       
 
           {isMobile ? (
                  <p
@@ -1170,6 +1136,7 @@ export default Home;
 // }
 
 // export default Home;
+
 
 
 
