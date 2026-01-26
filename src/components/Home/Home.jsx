@@ -575,11 +575,11 @@ function Home() {
                 ref={imageRef}
                 className="w-[11rem] h-[11rem] md:w-[18rem] md:h-[18rem] rounded-full overflow-hidden border-4 border-indigo-500/20 dark:border-indigo-400/20 shadow-xl transform translate-x-20 rotate-12"
                 style={{
-                  backgroundImage: "url('/MyImage/My.jpeg')",
+                  backgroundImage: "url('/MyImage/My.png')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
-              />
+              /> 
             </div>
 
             {/* Typewriter text */}
@@ -1170,6 +1170,7 @@ export default Home;
 // }
 
 // export default Home;
+
 
 
 
