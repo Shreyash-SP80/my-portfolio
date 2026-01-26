@@ -559,7 +559,6 @@ function About() {
               )}
             </div>
 
-            {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"> */}
             {/* Hobby section moves according to use interaction */}
             <div 
               ref={hobbyConstraintsRef} 
@@ -1240,6 +1239,7 @@ export default About;
 // };
 
 // export default About;
+
 
 
 
