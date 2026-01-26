@@ -348,11 +348,11 @@ function About() {
   return () => ctx.revert();
 }, [isMobile]);
 
+{/* className="relative py-25 md:py-24 overflow-hidden min-h-screen flex items-center" */}
   return (
     <section 
       ref={containerRef}
       id="about"
-      {/* className="relative py-25 md:py-24 overflow-hidden min-h-screen flex items-center" */}
       className="relative py-20 md:py-24 overflow-hidden min-h-screen md:flex md:items-center"
     >
       {/* background */}
