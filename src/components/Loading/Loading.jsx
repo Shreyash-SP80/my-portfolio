@@ -165,8 +165,9 @@ function Loading({ onLoadingComplete }) {
 
       <div ref={contentRef} className="text-center relative z-10">
         {/* Logo with animated border */}
-        <div className="mb-4 sm:mb-5 mx-auto rounded-full p-1.5 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 relative group">
-          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-30 blur-sm animate-pulse"></div>
+        <div className="mb-4 sm:mb-5 mx-auto rounded-full md:p-1.5 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 relative group">
+          {/* <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-30 blur-sm animate-pulse"></div> */}
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-30 blur-sm animate-pulse glow-ring"></div>
           <div className="absolute -inset-0 rounded-full border-2 border-transparent border-t-indigo-400 border-r-purple-400 animate-spin-slow"></div>
           <img
             src="/logo/Mylogo.jpg"
@@ -349,10 +350,10 @@ function Loading({ onLoadingComplete }) {
 
         .longfazers span {
           position: absolute;
-          height: 1px;
-          width: 100%;
+          height: 2px;
+          width: 40%;
           background: linear-gradient(90deg, transparent, #818cf8, transparent);
-          opacity: 0.3;
+          opacity: 0.4;
         }
 
         /* More longfazers with different positions and speeds */
@@ -605,8 +606,20 @@ function Loading({ onLoadingComplete }) {
         .animate-underline {
           animation: underline 3s ease-in-out infinite;
         }
-
+        
         /* Responsive adjustments */
+        @media (max-width: 640px) {
+          .glow-ring {
+            filter: none; /* disable blur on mobile */
+            opacity: 1;
+
+            box-shadow:
+              0 0 8px rgba(99,102,241,0.6),
+              0 0 16px rgba(168,85,247,0.45),
+              0 0 28px rgba(168,85,247,0.25);
+          }
+        }
+
         @media (max-width: 640px) {
           .superman-body {
             margin-left: -40px;
@@ -641,10 +654,12 @@ function Loading({ onLoadingComplete }) {
           }
           
           .longfazers span {
-            height: 0.5px;
+            height: 1px;
             opacity: 0.2;
           }
         }
+
+       
 
         @media (max-width: 480px) {
           .superman-body {
